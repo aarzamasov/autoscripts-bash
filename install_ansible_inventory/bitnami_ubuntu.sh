@@ -83,6 +83,13 @@ group_by_route53_names = True
 EOF
 
 # check that everything work
-cd /opt/ansible/update_code/
+cd /opt/ansible/update_code
 /opt/ansible/inventory/ec2.py --list 
 ansible all -m ping -u ec2-user
+
+# Set Ability for grab code from CodeCommit
+sudo apt-get install -y python-pip 
+sudo pip install awscli
+git config --global credential.helper '!aws codecommit credential-helper $@'
+git config --global credential.UseHttpPath true
+
