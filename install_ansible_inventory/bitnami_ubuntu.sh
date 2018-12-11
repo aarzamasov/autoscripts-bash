@@ -1,6 +1,9 @@
 #!/bin/bash
 set -x
 
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+
 apt-get install -y ansible  python-pip git 
 pip install ansible boto
 
